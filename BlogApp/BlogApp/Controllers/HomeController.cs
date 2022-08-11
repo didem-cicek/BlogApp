@@ -1,4 +1,5 @@
 ﻿using BlogApp.Models;
+using BlogApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,14 +16,22 @@ namespace BlogApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            MainPageViewModel model = new MainPageViewModel
+            {
+                QuadrupleCarouselParameter = "Teknoloji",
+                TrimbleCarouselParameter = "Teknoloji",
+                PageTitle = "Blog Sitesi"
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-        public IActionResult Contact() => View();
+        public IActionResult Contact() {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

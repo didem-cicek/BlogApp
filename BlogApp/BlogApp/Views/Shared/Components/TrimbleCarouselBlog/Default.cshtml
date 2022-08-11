@@ -1,0 +1,21 @@
+﻿@model List<TrimbleCarouselBlogViewModel>
+<div class="container-fluid pb-4 pt-5">
+    <div class="container animate-box">
+        <div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">@Model.FirstOrDefault()?.CategoryName</div>
+        </div>
+        <div class="owl-carousel owl-theme" id="slider2">
+            @foreach (TrimbleCarouselBlogViewModel m in Model){
+            <div class="item px-2">
+                <div class="fh5co_hover_news_img">
+                    <div class="fh5co_news_img"><img src="@Url.Content(m.PictureURL)" alt="@m.Title"/></div>
+                    <div>
+                        <a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@m.slugUri" class="d-block fh5co_small_post_heading"><span class="">@m.Title</span></a>
+                        <div class="c_g"><i class="fa fa-clock-o"></i> @m.PublishDate.ToShortDateString()</div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

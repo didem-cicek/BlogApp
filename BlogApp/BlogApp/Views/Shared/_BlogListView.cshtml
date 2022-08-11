@@ -1,0 +1,19 @@
+﻿@model BlogListViewModel
+<div class="row pb-4">
+                    <div class="col-md-5">
+                        <div class="fh5co_hover_news_img">
+                            <div class="fh5co_news_img">
+                                <img src="@Url.Content(Model.PictureURL)" alt="@Model.Title"/>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <a href="single.html" class="fh5co_magna py-2">@Model.Title </a>
+                        <a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@Model.SlugUri" class="fh5co_mini_time py-3"> @Model.Author - @Model.PublishedDate.ToShortDateString() </a>
+                        
+                        @Html.Raw(Model.BlogBody.Split("{BREAK}")[0])
+
+
+                    </div>
+                </div>

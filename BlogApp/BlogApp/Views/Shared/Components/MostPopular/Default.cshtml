@@ -1,0 +1,14 @@
+﻿@model List<MostPopularViewModel>
+
+<div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                @foreach(MostPopularViewModel m in Model){
+                <div class="row pb-3">
+                    <div class="col-5 align-self-center">
+                        <img src="@Url.Content(m.PictureUrl)" alt="@m.Title" class="fh5co_most_trading"/>
+                    </div>
+                    <div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"> @m.Title</div>
+                        <div class="most_fh5co_treding_font_123"> @m.PublishDate.ToShortDateString()</div>
+                    </div>
+                </div>
+                }

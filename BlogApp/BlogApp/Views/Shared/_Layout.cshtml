@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <title>@ViewData["Title"] - BlogApp</title>
+     @await RenderSectionAsync("HeaderSection",true)
     <link href="~/site/css/media_query.css" rel="stylesheet" type="text/css"/>
     <link href="~/site/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -19,19 +19,8 @@
     <script src="~/site/js/modernizr-3.5.0.min.js"></script>
 </head>
 <body class="@ViewData["body-class"]">
-<div class="container-fluid fh5co_header_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
-                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Friday, 5 January 2018</a>
-                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
-                    <div class="fh5co_treding_position_absolute"></div>
-                </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">Instagram’s big redesign goes live with black-and-white app</a>
-            </div>
-        </div>
-    </div>
-</div>
+    @await Component.InvokeAsync("TopTrending")
+
 <div class="container-fluid">
     <div class="container">
         <div class="row">
@@ -142,39 +131,16 @@
                 </div>
             </div>
             <div class="col-12 col-md-3 col-lg-2">
-                <div class="footer_main_title py-3"> Category</div>
-                <ul class="footer_menu">
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Business</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Entertainment</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Environment</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Health</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Life style</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Politics</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Technology</a></li>
-                    <li><a href="#" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; World</a></li>
-                </ul>
+                
+                @await Component.InvokeAsync("Category")
             </div>
             <div class="col-12 col-md-5 col-lg-3 position_footer_relative">
-                <div class="footer_main_title py-3"> Most Viewed Posts</div>
-                <div class="footer_makes_sub_font"> Dec 31, 2016</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_makes_sub_font"> Dec 31, 2016</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_makes_sub_font"> Dec 31, 2016</div>
-                <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
-                <div class="footer_position_absolute"><img src="~/site/images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
+                @await Component.InvokeAsync("MostViewPost")
+
             </div>
             <div class="col-12 col-md-12 col-lg-4 ">
-                <div class="footer_main_title py-3"> Last Modified Posts</div>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/allef-vinicius-108153.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/32-450x260.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/download (1).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/science-578x362.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/vil-son-35490.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/zack-minor-15104.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/download.jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/download (2).jpg" alt="img"/></a>
-                <a href="#" class="footer_img_post_6"><img src="~/site/images/ryan-moreno-98837.jpg" alt="img"/></a>
+                @await Component.InvokeAsync("LastModifiedPosts")
+
             </div>
         </div>
         <div class="row justify-content-center pt-2 pb-4">

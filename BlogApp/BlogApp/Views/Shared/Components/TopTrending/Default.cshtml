@@ -1,0 +1,15 @@
+﻿@model List<TopTrendingViewModel>
+<div class="container-fluid fh5co_header_bg">
+    <div class="container">
+        <div class="row">
+            @foreach (TopTrendingViewModel m in Model){
+            <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
+                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;@m.PublishDate.ToShortDateString()</a>
+                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
+                    <div class="fh5co_treding_position_absolute"></div>
+                </div>
+                <a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@m.slugUri" class="color_fff fh5co_mediya_setting">@m.Title</a>
+            </div>}
+        </div>
+    </div>
+</div>

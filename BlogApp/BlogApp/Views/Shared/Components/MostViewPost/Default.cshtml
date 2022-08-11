@@ -1,0 +1,7 @@
+﻿@model List<MostViewPostViewModel>
+
+<div class="footer_main_title py-3"> Most Viewed Posts</div>
+@foreach (MostViewPostViewModel m in Model){
+                <div class="footer_makes_sub_font"> @m.PublishDate.ToShortDateString()</div>
+                <a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@m.slugUri" class="footer_post pb-4"> @m.Title </a>}
+                <div class="footer_position_absolute"><img src="~/site/images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img"/></div>
