@@ -1,5 +1,6 @@
-﻿@model List<LastModifiedPostsViewModel>
-<div class="footer_main_title py-3"> Last Modified Posts</div>
+﻿@inject IViewLocalizer localizer
+@model List<LastModifiedPostsViewModel>
+<div class="footer_main_title py-3"> @localizer["En Son Güncellenenler"]</div>
 @foreach (LastModifiedPostsViewModel m in Model){
                 <a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@m.slugUri" class="footer_img_post_6"><img src="@Url.Content(m.PictureURL)" alt="@m.Title"/></a>}
                 

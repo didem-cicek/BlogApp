@@ -2,11 +2,12 @@
     <title>Blog index page</title>
 }
 
+@inject IViewLocalizer localizer
 @model List<BlogListViewModel>
 
 <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
     <div>
-        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
+        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">@localizer["Yeni Makaleler"]</div>
     </div>
 
     @foreach (var item in Model)
@@ -19,12 +20,12 @@
 
     <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
         <div class="col-12 text-center pb-4 pt-4">
-            <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
+            <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; @localizer["Önceki"]</a>
             <a href="#" class="btn_pagging">1</a>
             <a href="#" class="btn_pagging">2</a>
             <a href="#" class="btn_pagging">3</a>
             <a href="#" class="btn_pagging">...</a>
-            <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+            <a href="#" class="btn_mange_pagging">@localizer["Sonraki"] <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
         </div>
     </div>
 

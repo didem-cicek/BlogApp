@@ -1,6 +1,7 @@
 ﻿using BlogApp.Models;
 using BlogApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
 namespace BlogApp.Controllers
@@ -8,10 +9,11 @@ namespace BlogApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IStringLocalizer<HomeController> stringLocalizer;
+        public HomeController(ILogger<HomeController> logger, IStringLocalizer<HomeController> stringLocalizer)
         {
             _logger = logger;
+            this.stringLocalizer = stringLocalizer;
         }
 
         public IActionResult Index()
@@ -19,7 +21,6 @@ namespace BlogApp.Controllers
             MainPageViewModel model = new MainPageViewModel
             {
                 QuadrupleCarouselParameter = "Teknoloji",
-                TrimbleCarouselParameter = "Teknoloji",
                 PageTitle = "Blog Sitesi"
             };
             return View(model);

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer localizer
+
+<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <!-- Required meta tags -->
@@ -45,12 +47,7 @@
                 </div>
                 <!--<div class="d-inline-block text-center"><img src="~/site/images/country.png" alt="img" class="fh5co_country_width"/></div>-->
                 <div class="d-inline-block text-center dd_position_relative ">
-                    <select class="form-control fh5co_text_select_option">
-                        <option>English </option>
-                        <option>French </option>
-                        <option>German </option>
-                        <option>Spanish </option>
-                    </select>
+                    <partial name="_LanguageSwitcherPartial"/>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -67,13 +64,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" asp-action="index" asp-controller="Home" >Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-action="index" asp-controller="Home" >@localizer["Ana Sayfa"] <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" asp-action="index" asp-controller="Blog">Blog <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-action="index" asp-controller="Blog">@localizer["Makaleler"] <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" asp-action="single" asp-controller="Blog">Single <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-action="single" asp-controller="Blog">@localizer["Detay Sayfası"] <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
@@ -94,7 +91,7 @@
                         </div>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" asp-action="Contact" asp-controller="Home">Contact <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-action="Contact" asp-controller="Home">@localizer["İletişim"] <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -110,7 +107,7 @@
             <div class="col-12 spdp_right py-5"><img src="~/site/images/white_logo.png" alt="img" class="footer_logo"/></div>
             <div class="clearfix"></div>
             <div class="col-12 col-md-4 col-lg-3">
-                <div class="footer_main_title py-3"> About</div>
+                <div class="footer_main_title py-3"> @localizer["Hakkımızda"]</div>
                 <div class="footer_sub_about pb-3"> Lorem Ipsum is simply dummy text of the printing and typesetting
                     industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                     unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -157,12 +154,12 @@
 <div class="container-fluid fh5co_footer_right_reserved">
     <div class="container">
         <div class="row  ">
-            <div class="col-12 col-md-6 py-4 Reserved"> © Copyright 2018, All rights reserved. Design by <a href="https://freehtml5.co" title="Free HTML5 Bootstrap templates">FreeHTML5.co</a>. </div>
+            <div class="col-12 col-md-6 py-4 Reserved"> © @localizer["Telif Hakkı"] 2021</div>
             <div class="col-12 col-md-6 spdp_right py-4">
                 <a href="#" class="footer_last_part_menu">Home</a>
-                <a href="Contact_us.html" class="footer_last_part_menu">About</a>
-                <a href="Contact_us.html" class="footer_last_part_menu">Contact</a>
-                <a href="blog.html" class="footer_last_part_menu">Latest News</a></div>
+                <a href="Contact_us.html" class="footer_last_part_menu">@localizer["Hakkımızda"]</a>
+                <a href="Contact_us.html" class="footer_last_part_menu">@localizer["İletişim"]</a>
+                <a href="blog.html" class="footer_last_part_menu">@localizer["Yeni Eklenenler"]</a></div>
         </div>
     </div>
 </div>

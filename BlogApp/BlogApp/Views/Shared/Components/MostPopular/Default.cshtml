@@ -1,6 +1,7 @@
-﻿@model List<MostPopularViewModel>
+﻿@inject IViewLocalizer localizer
+@model List<MostPopularViewModel>
 
-<div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+<div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">@localizer["Popüler Makaleler"]</div>
                 @foreach(MostPopularViewModel m in Model){
                 <div class="row pb-3">
                     <div class="col-5 align-self-center">

@@ -1,5 +1,6 @@
-﻿@model List<Category>
-<div class="footer_main_title py-3"> Category</div>
+﻿@inject IViewLocalizer localizer
+@model List<Category>
+<div class="footer_main_title py-3"> @localizer["Kategoriler"]</div>
                 <ul class="footer_menu">
                     @foreach (Category c in Model){
                     <li><a asp-controller="blog" asp-action="single"  asp-route-slugUri = "@c.SlugUri" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; @c.CategoryName</a></li>}

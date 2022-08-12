@@ -6,7 +6,6 @@ namespace BlogApp.Models
     {
         public BlogDbContext(DbContextOptions db) : base(db)
         {
-
         }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tag> Tags { get; set; }

@@ -1,13 +1,38 @@
 using BlogApp.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BlogDbContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddControllersWithViews()
+    .AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix);
+builder.Services.AddLocalization(opt => opt.ResourcesPath = "Resources");
+
+var supportedCulture = new List<CultureInfo>
+{
+    new CultureInfo("tr-TR"),
+    new CultureInfo("en-US"),
+};
+
+var defaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("tr-TR");
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    opt.DefaultRequestCulture = defaultRequestCulture;
+    opt.SupportedCultures = supportedCulture;
+    opt.SupportedUICultures = supportedCulture;
+});
 
 var app = builder.Build();
+
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = defaultRequestCulture,
+    SupportedCultures = supportedCulture,
+    SupportedUICultures = supportedCulture
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
