@@ -117,28 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Admin Panel" xml:space="preserve">
-    <value>Dashboard</value>
+  <data name="Kategori Adı" xml:space="preserve">
+    <value>Category Name</value>
   </data>
-  <data name="Ana Sayfa" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Detay Sayfası" xml:space="preserve">
-    <value>Single</value>
-  </data>
-  <data name="Hakkımızda" xml:space="preserve">
-    <value>About Us</value>
-  </data>
-  <data name="Makaleler" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="Telif Hakkı" xml:space="preserve">
-    <value>Copyright</value>
-  </data>
-  <data name="Yeni Eklenenler" xml:space="preserve">
-    <value>Latest New</value>
-  </data>
-  <data name="İletişim" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Kategori adı zorunlu alan." xml:space="preserve">
+    <value>The Category Name is required.</value>
   </data>
 </root>

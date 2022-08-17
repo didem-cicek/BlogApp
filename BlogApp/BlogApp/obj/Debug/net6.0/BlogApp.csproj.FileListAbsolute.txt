@@ -81,3 +81,4 @@ C:\Users\didemcicek\Documents\GitHub\BlogApp\BlogApp\BlogApp\obj\Debug\net6.0\re
 C:\Users\didemcicek\Documents\GitHub\BlogApp\BlogApp\BlogApp\obj\Debug\net6.0\BlogApp.pdb
 C:\Users\didemcicek\Documents\GitHub\BlogApp\BlogApp\BlogApp\obj\Debug\net6.0\BlogApp.genruntimeconfig.cache
 C:\Users\didemcicek\Documents\GitHub\BlogApp\BlogApp\BlogApp\obj\Debug\net6.0\ref\BlogApp.dll
+C:\Users\didemcicek\Documents\GitHub\BlogApp\BlogApp\BlogApp\obj\Debug\net6.0\BlogApp.Resources.Models.Category.en.resources

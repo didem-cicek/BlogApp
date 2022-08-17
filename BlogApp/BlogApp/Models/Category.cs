@@ -4,8 +4,9 @@ namespace BlogApp.Models
 {
     public class Category : BaseEntity
     {
-        [Required]
+        [Required(ErrorMessage = "Kategori adı zorunlu alan.")]
         [StringLength(100)]
+        [Display(Name = "Kategori Adı")]
         public string CategoryName { get; set; }
         [Required]
         [StringLength(100)]
