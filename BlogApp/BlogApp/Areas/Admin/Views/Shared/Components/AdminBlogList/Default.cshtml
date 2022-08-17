@@ -1,0 +1,53 @@
+﻿@model List<AdminBlogListViewModels>
+@inject IViewLocalizer localizer              
+
+@foreach(AdminBlogListViewModels a in Model){
+<tr class="nk-tb-item">
+<td class="nk-tb-col nk-tb-col-check">
+    <div class="custom-control custom-control-sm custom-checkbox notext">
+        <input type="checkbox" class="custom-control-input" id="pid-01">
+        <label class="custom-control-label" for="pid-01"></label>
+    </div>
+</td>
+<td class="nk-tb-col">
+    <a href="#" class="project-title">
+        <div class="user-avatar">
+            <img src="@Url.Content(a.PictureURL)" alt="@a.Title"/>
+        </div>
+        <div class="project-info">
+            <h6 class="title">@a.Title</h6>
+        </div>
+    </a>
+</td>
+<td class="nk-tb-col tb-col-lg">
+    <span>@a.CategoryName</span>
+</td>
+<td class="nk-tb-col tb-col-lg">
+    <span>@a.Author</span>
+</td>
+<td class="nk-tb-col tb-col-lg">
+    <span>@a.Views</span>
+</td>
+<td class="nk-tb-col tb-col-xxl">
+    <span>@a.PublishedDate</span>
+</td>
+<td class="nk-tb-col tb-col-md">
+    <span class="badge badge-dim bg-success">-Status-</span>
+</td>                      
+<td class="nk-tb-col nk-tb-col-tools">
+    <ul class="nk-tb-actions gx-1">
+        <li>
+            <div class="drodown">
+                <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <ul class="link-list-opt no-bdr">
+                        <li><a asp-action="Edit" asp-route-id="@a.Id"><em class="icon ni ni-edit"></em><span>@localizer["Düzenle"]</span></a></li>
+                        <li><a  asp-action="Delete" asp-route-id="@a.Id"><em class="icon ni ni-delete"></em><span>@localizer["Sil"]</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</td>
+</tr>}
+                                               

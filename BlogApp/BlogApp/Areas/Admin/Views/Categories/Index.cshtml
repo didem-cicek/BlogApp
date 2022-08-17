@@ -1,0 +1,78 @@
+﻿@inject IViewLocalizer localizer
+@model List<Category>
+<div class="nk-content">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                <div class="nk-block-head nk-block-head-sm">
+                                    <div class="nk-block-between">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title">@localizer["Kategoriler"]</h3>
+                                            <div class="nk-block-des text-soft">
+                                                <p>@localizer["Tüm kategoriler buradadır."]</p>
+                                            </div>
+                                        </div><!-- .nk-block-head-content -->
+                                        <div class="nk-block-head-content">
+                                            <div class="toggle-wrap nk-block-tools-toggle">
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                                                <div class="toggle-expand-content" data-content="pageMenu">
+                                                    <ul class="nk-block-tools g-3">
+                                                        <li>
+                                                            <div class="drodown">
+                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>@localizer["Filtrele"]</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a href="#"><span>@localizer["Adına Göre"]</span></a></li>
+                                                                        <li><a href="#"><span>@localizer["Yazara Göre"]</span></a></li>
+                                                                        <li><a href="#"><span>@localizer["ID Numarasına Göre"]</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <a asp-area="admin" asp-controller="categories" asp-action="Create" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>@localizer["Kategori Ekle"]</span></a>
+                                                        </li>
+                                                        <li class="nk-block-tools-opt d-block d-sm-none">
+                                                            <a href="#" class="btn btn-icon btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate"><em class="icon ni ni-plus"></em></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div><!-- .toggle-wrap -->
+                                        </div><!-- .nk-block-head-content -->
+                                    </div><!-- .nk-block-between -->
+                                </div><!-- .nk-block-head -->
+                                <div class="nk-block">
+                                    <div class="row g-gs">
+                                        @foreach (Category c in Model){
+                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                                        <a asp-controller="admin" asp-action="categories"  asp-route-slugUri= "@c.SlugUri"  class="d-flex align-items-center">
+                                                            <div class="user-avatar sq bg-purple"><span>@c.CategoryName.Substring(0,1)</span></div>
+                                                            <div class="ms-3">
+                                                                <h6 class="title mb-1">@c.CategoryName</h6>
+                                                                <span class="sub-text">@c.SlugUri</span>
+                                                            </div>
+                                                        </a>
+                                                        <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a asp-action="Edit" asp-route-id="@c.Id"><em class="icon ni ni-edit"></em><span>@localizer["Kategori Düzenle"]</span></a></li>
+                                                                    <li><a asp-action="Delete" asp-route-id="@c.Id"><em class="icon ni ni-delete"></em><span>@localizer["Kategori Sil"]</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                         
+                                    </div>
+                                </div><!-- .nk-block -->
+                            </div>
+                        </div>
+                    </div>
+                    </div>

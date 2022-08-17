@@ -1,0 +1,69 @@
+﻿@inject IViewLocalizer localizer 
+@model BlogApp.Models.Article
+<div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                <div class="components-preview wide-md mx-auto">
+                                    <div class="nk-block-head nk-block-head-lg wide-sm">
+                                        <div class="nk-block-head-content">
+                                            <div class="nk-block-head-sub"><a class="back-to" asp-action="index"><em class="icon ni ni-arrow-left"></em><span>Geri Dön</span></a></div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="title nk-block-title">@localizer["Makale Ekle"]</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row g-gs">
+                                            <div class="col-lg-12">
+                                                <div class="card h-100">
+                                                    <div class="card-inner">
+                                                        <form action="Create">
+                                                            <div class="form-group">
+                                                                <label class="form-label">@localizer["Makalenizin Görselini Ekleyiniz"]</label>
+                                                                    <div class="upload-zone" data-max-file-size="4">
+                                                                    <div class="dz-message" data-dz-message>
+                                                                    <span class="dz-message-text">@localizer["Maksimum 4 MB Yükleyebilirsiniz."]</span>
+                                                                    <button class="btn btn-primary" asp-for="PictureURL">@localizer["Dosya Seçin"]</button>
+                                                                     </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label" asp-for="Title">@localizer["Makale Adı"]</label>
+                                                                <div class="form-control-wrap">
+                                                                    <input type="text" class="form-control" asp-for="Title">
+                                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label" asp-for="SlugUri" >@localizer["Makale Kısayol"]</label>
+                                                                <div class="form-control-wrap">
+                                                                    <input type="text" class="form-control" asp-for="SlugUri">
+                                                                    <span asp-validation-for="SlugUri" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea class="tinymce-basic form-control" asp-for="Body">@localizer["Yazınızı yazınız..."]</textarea>
+                                                            </div>
+                                                           <div class="form-group">
+                                                                <button type="submit" value="Create" class="btn btn-lg btn-primary">@localizer["Ekle"]</button>
+                                                            </div>
+                                                            
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                            </div>
+                                        </div>
+                                    </div><!-- .nk-block -->
+                                   
+                                    </div><!-- .nk-block -->
+                                        
+                                        </div>
+                                        
+                                        </div><!-- card -->
+                                    </div><!-- .nk-block -->
