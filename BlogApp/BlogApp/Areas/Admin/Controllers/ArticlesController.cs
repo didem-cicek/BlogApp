@@ -1,5 +1,7 @@
-﻿using BlogApp.Models;
+﻿using BlogApp.Areas.Admin.ViewModels;
+using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Areas.Admin.Controllers
@@ -52,16 +54,35 @@ namespace BlogApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var articles = _context.Articles.FindAsync(id);
+            var articles = await _context.Articles.Include(a=>a.Category).FirstOrDefaultAsync(a=>a.Id == id);
             if (articles == null)
             {
                 return NotFound();
             }
-            return View(articles);
+            var vm = new ArticleEditVM
+            {
+                AuthorName = articles.AuthorName,
+                Title = articles.Title,
+                SlugUri = articles.SlugUri,
+                PictureURL = articles.PictureURL,
+                Body = articles.Body,
+                Id = articles.Id,
+                Views = articles.Views,
+                PublishDate = articles.PublishDate,
+                CategoryID = articles.CategoryID
+            };
+            vm.Categories = (from c in _context.Categories
+                             select new SelectListItem
+                             {
+                                 Text = c.CategoryName,
+                                 Value = c.Id.ToString(),
+                                 Selected = articles.CategoryID == c.Id
+                             }).ToList();
+            return View(vm);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind ("Title, Author, PictureURL, Views, CategoryName, PublishedDate, SlugUri, Id")] Article articles)
+        public async Task<IActionResult> Edit(int id, ArticleEditVM articles)
         {
             if(articles.Id != id)
             {
