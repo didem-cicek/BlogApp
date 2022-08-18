@@ -13,7 +13,7 @@
 }
 
 <div>
-    <form asp-controller="Language" asp-action="SetLanguage" asp-route-returnURL="@returnURL">
+    <form asp-controller="Language" asp-action="SetLanguage" asp-route-returnURL="@returnURL" asp-area="">
         <select
         name="culture"
         onchange="this.form.submit();"

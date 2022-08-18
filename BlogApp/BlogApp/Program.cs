@@ -1,3 +1,4 @@
+using BlogApp.Areas.Admin.Services;
 using BlogApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews()
     .AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
     .AddDataAnnotationsLocalization();
 builder.Services.AddLocalization(opt => opt.ResourcesPath = "Resources");
+
+builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 
 var supportedCulture = new List<CultureInfo>
 {

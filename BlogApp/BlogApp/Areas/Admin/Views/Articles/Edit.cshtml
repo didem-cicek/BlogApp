@@ -21,7 +21,10 @@
                                 <div class="card h-100">
                                     <div class="card-inner">
                                         <form asp-action="Edit" enctype="multipart/form-data" asp-area="admin" asp-controller="Articles">
-                                            
+                                            <div asp-validation-summary="All"></div>
+                                            <input asp-for="AuthorName" style="display:none;" />
+                                            <input asp-for="PictureURL" style="display:none;" />
+                                            <input asp-for="Categories" style="display:none;" />
                                             <div class="form-group">
                                                 <label class="form-label" asp-for="PictureURL">@localizer["Makalenizin Görselini Ekleyiniz"]</label>
                                                 <input type="file" class="form-file-input" id="customFile" asp-for="@Model.Picture">

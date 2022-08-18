@@ -1,4 +1,5 @@
-﻿using BlogApp.Areas.Admin.ViewModels;
+﻿using BlogApp.Areas.Admin.Services;
+using BlogApp.Areas.Admin.ViewModels;
 using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,9 +11,12 @@ namespace BlogApp.Areas.Admin.Controllers
     public class ArticlesController : Controller
     {
         private readonly BlogDbContext _context;
-        public ArticlesController(BlogDbContext _context)
+        private readonly IFileUploadService fileService;
+
+        public ArticlesController(BlogDbContext _context,IFileUploadService fileService)
         {
             this._context = _context;
+            this.fileService = fileService;
         }
         public async Task<IActionResult> Index() {
             return _context.Articles != null ?
@@ -82,9 +86,9 @@ namespace BlogApp.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, ArticleEditVM articles)
+        public async Task<IActionResult> Edit(int id, ArticleEditVM vm)
         {
-            if(articles.Id != id)
+            if(vm.Id != id)
             {
                 return NotFound();
             }
@@ -92,12 +96,29 @@ namespace BlogApp.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(articles);
+
+                    var model=await _context.Articles.Include(a=>a.Category).FirstOrDefaultAsync(a=>a.Id == id);
+                    if (vm.Picture.Length > 0)
+                    {
+
+                        model.PictureURL = await fileService.UploadFile(vm.Picture);
+                    }
+                    model.SlugUri = vm.SlugUri;
+                    model.Title = vm.Title;
+                    model.Views=vm.Views;
+                    model.PublishDate = vm.PublishDate;
+                    model.AuthorName = vm.AuthorName;
+                    model.SlugUri =vm.SlugUri;
+                    model.Body = vm.Body;
+                    model.CategoryID = vm.CategoryID;
+                    model.Id = vm.Id;
+
+                    _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
                 catch (Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException)
                 {
-                    if (!ArticleExists(articles.Id))
+                    if (!ArticleExists(vm.Id))
                     {
                         return NotFound();
                     }
@@ -108,7 +129,7 @@ namespace BlogApp.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(articles);
+            return View(vm);
         }
         public async Task<IActionResult> Delete(int? id)
         {

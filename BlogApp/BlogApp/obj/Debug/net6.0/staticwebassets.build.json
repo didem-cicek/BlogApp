@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5OiwMJMd0nFcFRVjFB4YKmEIBnSC73TulomyyvD0A2c=",
+  "Hash": "dyfL2xrLFg3SWwTofahcYx2h9ilS8o2laMBoKFkN/4Q=",
   "Source": "BlogApp",
   "BasePath": "_content/BlogApp",
   "Mode": "Default",
@@ -9025,6 +9025,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\admin\\scss\\vendors\\toastr\\_toastr.scss"
+    },
+    {
+      "Identity": "C:\\Users\\didemcicek\\Documents\\GitHub\\BlogApp\\BlogApp\\BlogApp\\wwwroot\\content\\eb139a04-3f4c-4e11-a431-1b1738eee5d4.png",
+      "SourceId": "BlogApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\didemcicek\\Documents\\GitHub\\BlogApp\\BlogApp\\BlogApp\\wwwroot\\",
+      "BasePath": "_content/BlogApp",
+      "RelativePath": "content/eb139a04-3f4c-4e11-a431-1b1738eee5d4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\content\\eb139a04-3f4c-4e11-a431-1b1738eee5d4.png"
     },
     {
       "Identity": "C:\\Users\\didemcicek\\Documents\\GitHub\\BlogApp\\BlogApp\\BlogApp\\wwwroot\\site\\css\\animate.css",
