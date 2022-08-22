@@ -10,7 +10,7 @@
     </div>
 </td>
 <td class="nk-tb-col">
-    <a href="#" class="project-title">
+    <a asp-action="Edit"  asp-route-id= "@a.Id" class="project-title">
         <div class="user-avatar">
             <img src="@Url.Content(a.PictureURL)" alt="@a.Title"/>
         </div>
@@ -28,11 +28,11 @@
 <td class="nk-tb-col tb-col-lg">
     <span>@a.Views</span>
 </td>
-<td class="nk-tb-col tb-col-xxl">
-    <span>@a.PublishedDate</span>
+<td class="nk-tb-col tb-col-lg">
+    <span>@a.PublishedDate.ToShortDateString()</span>
 </td>
-<td class="nk-tb-col tb-col-md">
-    <span class="badge badge-dim bg-success">-Status-</span>
+<td class="nk-tb-col tb-col-lg">
+    <span class="badge badge-dim bg-success" id="statusColor">@a.StatusText</span>
 </td>                      
 <td class="nk-tb-col nk-tb-col-tools">
     <ul class="nk-tb-actions gx-1">

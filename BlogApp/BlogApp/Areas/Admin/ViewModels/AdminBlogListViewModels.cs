@@ -9,8 +9,9 @@
         public string Author { get; set; }
         public string SlugUri { get; set; }
         public int Views { get; set; }
-        //public string Status { get; set; }
+        public string StatusText { get; set; }
         public string CategoryName { get; set; }
+        public bool Status { get; set; }
 
     }
 }

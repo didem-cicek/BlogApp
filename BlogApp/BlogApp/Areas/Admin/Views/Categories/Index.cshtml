@@ -48,7 +48,7 @@
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="d-flex justify-content-between align-items-start mb-3">
-                                                        <a asp-controller="admin" asp-action="categories"  asp-route-slugUri= "@c.SlugUri"  class="d-flex align-items-center">
+                                                        <a asp-action="Edit"  asp-route-id= "@c.Id"  class="d-flex align-items-center">
                                                             <div class="user-avatar sq bg-purple"><span>@c.CategoryName.Substring(0,1)</span></div>
                                                             <div class="ms-3">
                                                                 <h6 class="title mb-1">@c.CategoryName</h6>

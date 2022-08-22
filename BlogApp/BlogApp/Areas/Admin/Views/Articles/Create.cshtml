@@ -1,5 +1,5 @@
 ﻿@inject IViewLocalizer localizer 
-@model BlogApp.Models.Article
+@model ArticleAddVM
 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -20,38 +20,70 @@
                                             <div class="col-lg-12">
                                                 <div class="card h-100">
                                                     <div class="card-inner">
-                                                        <form action="Create">
-                                                            <div class="form-group">
-                                                                <label class="form-label">@localizer["Makalenizin Görselini Ekleyiniz"]</label>
-                                                                    <div class="upload-zone" data-max-file-size="4">
-                                                                    <div class="dz-message" data-dz-message>
-                                                                    <span class="dz-message-text">@localizer["Maksimum 4 MB Yükleyebilirsiniz."]</span>
-                                                                    <button class="btn btn-primary" asp-for="PictureURL">@localizer["Dosya Seçin"]</button>
-                                                                     </div>
-                                                            </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="form-label" asp-for="Title">@localizer["Makale Adı"]</label>
+                                                        <form asp-action="Create" enctype="multipart/form-data" asp-area="admin" asp-controller="Articles">
+                                                            <div asp-validation-summary="All"></div>
+                                                             <input asp-for="PictureURL" style="display:none;" />
+                                                            <input asp-for="Categories" style="display:none;" />
+                                            <div class="form-group">
+                                                <label class="form-label" asp-for="PictureURL">@localizer["Resim Ekleyiniz"]</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-file">
+                                                        <input type="file" class="form-file-input" id="customFile" asp-for="@Model.Picture">
+                                                        <label class="form-file-label" for="customFile">@localizer["Dosya Seçiniz"]</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" asp-for="Categories">@localizer["Kategori Adı"]</label>
+                                                <div class="form-control-wrap">
+                                                    <select class="form-select js-select2" asp-for="@Model.CategoryID" asp-items="@Model.Categories"></select>  
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" asp-for="Title">
-                                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                                    <div class="form-icon form-icon-right">
+                                                                        <em class="icon ni ni-calendar-alt"></em>
+                                                                    </div>
+                                                                    <input type="text" class="form-control form-control-xl form-control-outlined date-picker" id="outlined-date-picker" asp-for="PublishDate">
+                                                                    <label class="form-label-outlined" for="outlined-date-picker" asp-for="@Model.PublishDate">@localizer["Tarih"]</label>
+                                                                    <span asp-validation-for="PublishDate" class="text-danger"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="form-label" asp-for="SlugUri" >@localizer["Makale Kısayol"]</label>
-                                                                <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" asp-for="SlugUri">
-                                                                    <span asp-validation-for="SlugUri" class="text-danger"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <textarea class="tinymce-basic form-control" asp-for="Body">@localizer["Yazınızı yazınız..."]</textarea>
-                                                            </div>
-                                                           <div class="form-group">
-                                                                <button type="submit" value="Create" class="btn btn-lg btn-primary">@localizer["Ekle"]</button>
-                                                            </div>
-                                                            
-                                                        </form>
+                                                <label class="form-label" asp-for="AuthorName">@localizer["Yazar Adı"]</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="AuthorName">
+                                                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" asp-for="Title">@localizer["Makale Adı"]</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Title">
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" asp-for="SlugUri">@localizer["Makale Kısayol"]</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="SlugUri">
+                                                    <span asp-validation-for="SlugUri" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                               <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Status">
+                                                <label class="custom-control-label" for="customSwitch1">@localizer["Durum"]</label>
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="tinymce-basic form-control" asp-for="Body"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" value="Create" class="btn btn-lg btn-primary">@localizer["Ekle"]</button>
+                                            </div>
+
+                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

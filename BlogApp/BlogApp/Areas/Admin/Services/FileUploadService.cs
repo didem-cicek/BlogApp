@@ -22,8 +22,8 @@
              if(file.Length > 0)
             {
                 var extension=file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
-                var returnValue= "~"+"\\content"+ Guid.NewGuid().ToString()+'.'+extension;
-                var filePath = Path.Combine(host.WebRootPath + "\\content" + Guid.NewGuid().ToString()) + '.' + extension;
+                var returnValue= "~"+"/content/"+ Guid.NewGuid().ToString()+'.'+extension;
+                var filePath = Path.Combine(host.WebRootPath + "/content/" + Guid.NewGuid().ToString()) + '.' + extension;
                 using (var stream = System.IO.File.Create(filePath))
                     await file.CopyToAsync(stream);
 

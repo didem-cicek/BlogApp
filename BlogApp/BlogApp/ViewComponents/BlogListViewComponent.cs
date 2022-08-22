@@ -21,6 +21,7 @@ namespace BlogApp.ViewComponents
             if (categoryName == null)
             {
                 model = await (from q in context.Articles.Include(c => c.Category)
+                               where q.Status == true
                                select new BlogListViewModel
                                {
                                    Author = q.AuthorName,
@@ -28,7 +29,7 @@ namespace BlogApp.ViewComponents
                                    PictureURL = q.PictureURL,
                                    PublishedDate = q.PublishDate,
                                    SlugUri = q.SlugUri,
-                                   Title = q.Title
+                                   Title = q.Title,
 
                                }).Take(5).ToListAsync();
             }

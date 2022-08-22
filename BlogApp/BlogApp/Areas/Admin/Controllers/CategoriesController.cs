@@ -1,7 +1,6 @@
 ﻿using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity.Infrastructure;
 
 namespace BlogApp.Areas.Admin.Controllers
 {

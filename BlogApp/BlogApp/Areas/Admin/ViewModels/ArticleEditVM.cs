@@ -14,6 +14,7 @@ namespace BlogApp.Areas.Admin.ViewModels
         public string AuthorName { get; set; }
         public int Views { get; set; }
         public int CategoryID { get; set; }
+        public bool Status { get; set; }
         public List<SelectListItem> Categories { get; set; }
 
     }

@@ -14,6 +14,7 @@ namespace BlogApp.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var model = await (from q in context.Articles
+                               where q.Status == true
                                orderby q.Views descending
                                select new MostViewPostViewModel
                                {

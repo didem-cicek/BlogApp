@@ -28,8 +28,21 @@ namespace BlogApp.ViewComponents
                                        CategoryName = q.Category.CategoryName,
                                        PublishedDate = q.PublishDate,
                                        SlugUri = q.SlugUri,
+                                       Status = q.Status
                                    }
                                    ).Take(10).ToListAsync();
+                var statusFind = model.ToList();
+                foreach (var item in statusFind)
+                {
+                    if (item.Status == true)
+                    {
+                        item.StatusText = "Yayınlandı";
+                    }
+                    else
+                    {
+                        item.StatusText = "Yayınlanması";
+                    }
+                }
 
                 }
                 return View(model);

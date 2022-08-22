@@ -27,6 +27,7 @@ namespace BlogApp.Models
         [ForeignKey("Category")]
         public int CategoryID { get; set; }
         public Category Category { get; set; }
+        public bool Status { get; set; }
 
 
     }

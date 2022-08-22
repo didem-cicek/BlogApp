@@ -8,5 +8,6 @@
         public string Author { get; set; }
         public string SlugUri { get; set; }
         public string BlogBody { get; set; }
+        public bool Status { get; set; }
     }
 }

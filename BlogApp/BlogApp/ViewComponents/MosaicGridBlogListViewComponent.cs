@@ -20,6 +20,7 @@ namespace BlogApp.ViewComponents
             if (categoryName == null)
             {
                 model = await (from q in context.Articles.Include(c => c.Category)
+                               where q.Status == true
                                select new MosaicGridBlogListViewModel
                                {
                                    SlugUri = q.SlugUri,

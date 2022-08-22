@@ -38,20 +38,58 @@ namespace BlogApp.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            var vm = new ArticleAddVM();
+            vm.Categories = (from c in _context.Categories
+                              select new SelectListItem
+                              {
+                                  Text = c.CategoryName,
+                                  Value = c.Id.ToString(),
+                                  Selected = true
+                              }).ToList();
+            return View(vm);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title, Author, PictureURL, Views, CategoryName, PublishedDate, SlugUri, Id")] Article articles)
+        public async Task<IActionResult> Create(ArticleAddVM addVm, Article article)
         {
-            if (ModelState.IsValid)
+            var vm = new ArticleAddVM {
+                AuthorName = addVm.AuthorName,
+                Title = addVm.Title,
+                SlugUri = addVm.SlugUri,
+                Body = addVm.Body,
+                Views = addVm.Views,
+                PublishDate = addVm.PublishDate,
+                Picture = addVm.Picture,
+                Status = addVm.Status,
+            };
+            vm.Categories = (from c in _context.Categories
+                             select new SelectListItem
+                             {
+                                 Text = c.CategoryName,
+                                 Value = c.Id.ToString(),
+                             }).ToList();
+
+            vm.PictureURL = await fileService.UploadFile(vm.Picture);
+            vm.CategoryID = addVm.CategoryID;
+           
+            article = new Article
             {
-                _context.Add(articles);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(articles);
-        }
+                Title = vm.Title,
+                AuthorName = vm.AuthorName,
+                SlugUri = vm.SlugUri,
+                Body = vm.Body,
+                Views = vm.Views,
+                PublishDate = vm.PublishDate,
+                PictureURL = vm.PictureURL,
+                CategoryID = vm.CategoryID,
+                Status = vm.Status,
+            };
+
+            _context.Add(article);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                    return View(vm);
+        } 
         public async Task<IActionResult> Edit(int? id)
         {
             if(id==null || _context.Articles == null)
@@ -146,7 +184,7 @@ namespace BlogApp.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Articles == null)
             {

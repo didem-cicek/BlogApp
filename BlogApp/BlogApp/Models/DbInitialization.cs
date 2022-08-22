@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-
-namespace BlogApp.Models
+﻿namespace BlogApp.Models
 {
     public class DbInitialization
     {

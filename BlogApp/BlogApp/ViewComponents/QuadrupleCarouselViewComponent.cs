@@ -16,7 +16,7 @@ namespace BlogApp.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string categoryName)
         {
             var model = await (from q in context.Articles.Include(c => c.Category)
-                               where q.Category.CategoryName == categoryName
+                               where q.Category.CategoryName == categoryName && q.Status==true
                                select new QuadrupleCarouselViewModel
                                {
                                    slugUri = q.SlugUri,

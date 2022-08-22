@@ -13,7 +13,7 @@
                     <div class="nk-block nk-block-lg">
                         <div class="nk-block-head">
                             <div class="nk-block-head-content">
-                                <h4 class="title nk-block-title">@localizer["Makale Ekle"]</h4>
+                                <h4 class="title nk-block-title">@localizer["Makale Düzenle"]</h4>
                             </div>
                         </div>
                         <div class="row g-gs">
@@ -26,23 +26,30 @@
                                             <input asp-for="PictureURL" style="display:none;" />
                                             <input asp-for="Categories" style="display:none;" />
                                             <div class="form-group">
-                                                <label class="form-label" asp-for="PictureURL">@localizer["Makalenizin Görselini Ekleyiniz"]</label>
-                                                <input type="file" class="form-file-input" id="customFile" asp-for="@Model.Picture">
-                                                
-                                            </div>
-                                             <div class="form-group">
-                                                <label class="form-label" asp-for="Title">@localizer["Kategori Adı"]</label>
-                                                <div class="form-control-wrap">     
-                                                    <select asp-for="@Model.CategoryID" asp-items="@Model.Categories"></select>                                                    
+                                                <label class="form-label" asp-for="PictureURL">@localizer["Resim Ekleyiniz"]</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-file">
+                                                        <input type="file" class="form-file-input" id="customFile" asp-for="@Model.Picture">
+                                                        <label class="form-file-label" for="customFile">@localizer["Dosya Seçiniz"]</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label" asp-for="@Model.PublishDate">@localizer["Tarih"]</label>
+                                                <label class="form-label" asp-for="Categories">@localizer["Kategori Adı"]</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="datetime" class="form-control" asp-for="PublishDate">
-                                                    <span asp-validation-for="PublishDate" class="text-danger"></span>
+                                                    <select class="form-select js-select2" asp-for="@Model.CategoryID" asp-items="@Model.Categories"></select>  
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                                <div class="form-control-wrap">
+                                                                    <div class="form-icon form-icon-right">
+                                                                        <em class="icon ni ni-calendar-alt"></em>
+                                                                    </div>
+                                                                    <input type="text" class="form-control form-control-xl form-control-outlined date-picker" id="outlined-date-picker" asp-for="PublishDate">
+                                                                    <label class="form-label-outlined" for="outlined-date-picker" asp-for="@Model.PublishDate">@localizer["Tarih"]</label>
+                                                                    <span asp-validation-for="PublishDate" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
                                             <div class="form-group">
                                                 <label class="form-label" asp-for="Title">@localizer["Makale Adı"]</label>
                                                 <div class="form-control-wrap">
@@ -56,6 +63,12 @@
                                                     <input type="text" class="form-control" asp-for="SlugUri">
                                                     <span asp-validation-for="SlugUri" class="text-danger"></span>
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                               <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Status">
+                                                <label class="custom-control-label" for="customSwitch1">@localizer["Durum"]</label>
+                                            </div>
                                             </div>
                                             <div class="form-group">
                                                 <textarea class="tinymce-basic form-control" asp-for="Body"></textarea>
